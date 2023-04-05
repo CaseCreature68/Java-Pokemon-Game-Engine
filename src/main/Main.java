@@ -1,5 +1,7 @@
 package main;
 
+import main.ids.EngineIds;
+
 import javax.swing.JFrame;
 
 public class Main {
@@ -7,7 +9,7 @@ public class Main {
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        window.setTitle("JPGE");
+        window.setTitle(EngineIds.gameTitle);
 
         window.setLocationRelativeTo(null);
         window.setVisible(true);
