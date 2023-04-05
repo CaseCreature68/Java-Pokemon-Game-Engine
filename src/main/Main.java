@@ -2,7 +2,7 @@ package main;
 
 import javax.swing.JFrame;
 
-import static main.ids.EngineIds.GAMETITLE;
+import static main.ids.EngineConstants.GAMETITLE;
 
 public class Main {
     public static void main(String[] args) {
