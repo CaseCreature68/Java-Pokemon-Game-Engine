@@ -12,6 +12,8 @@ public class EngineConstants {
 
     public static final int FPS = 60;
 
+    public static final int PLAYER_SPEED = 4;
+
     /**
      * -----------------------------------------------------------------------------------------------------------------
      * GENERATION SETTINGS
