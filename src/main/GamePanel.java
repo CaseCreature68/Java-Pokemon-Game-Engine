@@ -15,7 +15,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     int playerX = 100;
     int playerY = 100;
-    int playerSpeed = 4;
+    final int playerSpeed = 4;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
@@ -32,27 +32,20 @@ public class GamePanel extends JPanel implements Runnable {
 
     @Override
     public void run() {
-        final double DRAW_INTERVAL = (double) 1000000000/FPS;
-        double nextDrawTime = System.nanoTime() + DRAW_INTERVAL;
+        double DRAW_INTERVAL = (double) 1000000000/FPS;
+        double delta = 0;
+        long lastTime = System.nanoTime();
+        long currentTime;
 
         while (gameThread != null) {
-            update();
-            repaint();
+            currentTime = System.nanoTime();
+            delta += (currentTime - lastTime) / DRAW_INTERVAL;
+            lastTime = currentTime;
 
-            try {
-                double remainingTime = nextDrawTime - System.nanoTime();
-                remainingTime = remainingTime/1000000;
-
-                if (remainingTime < 0) {
-                    remainingTime = 0;
-                }
-
-                Thread.sleep((long) remainingTime);
-
-                nextDrawTime += DRAW_INTERVAL;
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            if (delta >= 1) {
+                update();
+                repaint();
+                delta--;
             }
         }
     }
