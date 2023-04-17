@@ -8,11 +8,12 @@ public class EngineConstants {
      * -----------------------------------------------------------------------------------------------------------------
      * GENERAL SETTINGS
      */
-    public static final String GAMETITLE = "JPGE"; //The title of the game window
+    public static final String GAME_TITLE = "JPGE"; //The title of the game window
 
     public static final int FPS = 60;
 
-    public static final int PLAYER_SPEED = 4;
+    public static final int PLAYER_SPEED = 2;
+    public static final int PLAYER_RUNNING_SPEED = 4;
 
     /**
      * -----------------------------------------------------------------------------------------------------------------
