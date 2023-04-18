@@ -52,48 +52,54 @@ public class Player extends Entity {
     }
 
     public void update() {
-        if (keyH.upPressed) {
-            direction = "up";
-            if (keyH.running) {
-                move = PLAYER_RUNNING_SPEED;
-            } else {
-                move = PLAYER_SPEED;
-            }
-            y -= move;
-        } else if (keyH.downPressed) {
-            direction = "down";
-            if (keyH.running) {
-                move = PLAYER_RUNNING_SPEED;
-            } else {
-                move = PLAYER_SPEED;
-            }
-            y += move;
-        } else if (keyH.leftPressed) {
-            direction = "left";
-            if (keyH.running) {
-                move = PLAYER_RUNNING_SPEED;
-            } else {
-                move = PLAYER_SPEED;
-            }
-            x -= move;
-        } else if (keyH.rightPressed) {
-            direction = "right";
-            if (keyH.running) {
-                move = PLAYER_RUNNING_SPEED;
-            } else {
-                move = PLAYER_SPEED;
-            }
-            x += move;
-        }
 
-        spriteCounter++;
-        if (spriteCounter > 10) {
-            if (spriteNumber == 1) {
-                spriteNumber = 2;
-            } else if (spriteNumber == 2) {
-                spriteNumber = 1;
+        if (keyH.upPressed || keyH.downPressed ||
+                keyH.leftPressed || keyH.rightPressed) {
+            if (keyH.upPressed) {
+                direction = "up";
+                if (keyH.running) {
+                    move = PLAYER_RUNNING_SPEED;
+                } else {
+                    move = PLAYER_SPEED;
+                }
+                y -= move;
+            } else if (keyH.downPressed) {
+                direction = "down";
+                if (keyH.running) {
+                    move = PLAYER_RUNNING_SPEED;
+                } else {
+                    move = PLAYER_SPEED;
+                }
+                y += move;
+            } else if (keyH.leftPressed) {
+                direction = "left";
+                if (keyH.running) {
+                    move = PLAYER_RUNNING_SPEED;
+                } else {
+                    move = PLAYER_SPEED;
+                }
+                x -= move;
+            } else if (keyH.rightPressed) {
+                direction = "right";
+                if (keyH.running) {
+                    move = PLAYER_RUNNING_SPEED;
+                } else {
+                    move = PLAYER_SPEED;
+                }
+                x += move;
             }
-            spriteCounter = 0;
+
+            spriteCounter++;
+            if (spriteCounter > 10) {
+                if (spriteNumber == 1) {
+                    spriteNumber = 2;
+                } else if (spriteNumber == 2) {
+                    spriteNumber = 1;
+                }
+                spriteCounter = 0;
+            }
+        } else {
+            spriteNumber = 3;
         }
     }
 
@@ -106,6 +112,8 @@ public class Player extends Entity {
                     image = up1;
                 } else if (spriteNumber == 2) {
                     image = up2;
+                } else if (spriteNumber == 3) {
+                    image = upIdle;
                 }
             }
             case "down" -> {
@@ -113,6 +121,8 @@ public class Player extends Entity {
                     image = down1;
                 } else if (spriteNumber == 2) {
                     image = down2;
+                } else if (spriteNumber == 3) {
+                    image = downIdle;
                 }
             }
             case "left" -> {
@@ -120,6 +130,8 @@ public class Player extends Entity {
                     image = left1;
                 } else if (spriteNumber == 2) {
                     image = left2;
+                } else if (spriteNumber == 3) {
+                    image = leftIdle;
                 }
             }
             case "right" -> {
@@ -127,6 +139,8 @@ public class Player extends Entity {
                     image = right1;
                 } else if (spriteNumber == 2) {
                     image = right2;
+                } else if (spriteNumber == 3) {
+                    image = rightIdle;
                 }
             }
         }
