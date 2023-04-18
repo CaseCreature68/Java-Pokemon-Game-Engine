@@ -41,7 +41,7 @@ public class EngineConstants {
     public static final int SCREEN_WIDTH = TILE_SIZE * MAX_SCREEN_COL; // Default: 768 pixels
     public static final int SCREEN_HEIGHT = TILE_SIZE * MAX_SCREEN_ROW; // Default: 576 pixels
 
-    public static final Color BACKGROUND = Color.BLACK; // The background for the GamePanel
+    public static final Color BACKGROUND = Color.WHITE; // The background for the GamePanel
 
     public static final boolean DOUBLE_BUFFERED = true; // Whether the GamePanel is Double Buffered.
 }

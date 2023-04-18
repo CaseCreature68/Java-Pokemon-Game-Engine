@@ -89,17 +89,34 @@ public class Player extends Entity {
                 x += move;
             }
 
-            spriteCounter++;
-            if (spriteCounter > 10) {
-                if (spriteNumber == 1) {
-                    spriteNumber = 2;
-                } else if (spriteNumber == 2) {
+            if (keyH.upPressed || keyH.downPressed) {
+                spriteCounter++;
+                if (spriteCounter > 10) {
+                    if (spriteNumber == 1) {
+                        spriteNumber++;
+                    } else if (spriteNumber == 2) {
+                        spriteNumber++;
+                    } else if (spriteNumber == 3) {
+                        spriteNumber++;
+                    } else if (spriteNumber == 4) {
+                        spriteNumber = 1;
+                    }
+                    spriteCounter = 0;
+                }
+            } else {
+                spriteCounter++;
+                if (spriteNumber > 2) {
                     spriteNumber = 1;
                 }
-                spriteCounter = 0;
+                if (spriteCounter > 10) {
+                    if (spriteNumber == 1) {
+                        spriteNumber++;
+                    } else if (spriteNumber == 2) {
+                        spriteNumber = 1;
+                    }
+                    spriteCounter = 0;
+                }
             }
-        } else {
-            spriteNumber = 3;
         }
     }
 
@@ -110,19 +127,19 @@ public class Player extends Entity {
             case "up" -> {
                 if (spriteNumber == 1) {
                     image = up1;
-                } else if (spriteNumber == 2) {
-                    image = up2;
-                } else if (spriteNumber == 3) {
+                } else if (spriteNumber == 2 || spriteNumber == 4) {
                     image = upIdle;
+                } else if (spriteNumber == 3) {
+                    image = up2;
                 }
             }
             case "down" -> {
                 if (spriteNumber == 1) {
                     image = down1;
-                } else if (spriteNumber == 2) {
-                    image = down2;
-                } else if (spriteNumber == 3) {
+                } else if (spriteNumber == 2 || spriteNumber == 4) {
                     image = downIdle;
+                } else if (spriteNumber == 3) {
+                    image = down2;
                 }
             }
             case "left" -> {
@@ -144,7 +161,15 @@ public class Player extends Entity {
                 }
             }
         }
-        ;
+
+        if (!keyH.upPressed && !keyH.downPressed && !keyH.leftPressed && !keyH.rightPressed) {
+            switch (direction) {
+                case "up" -> image = upIdle;
+                case "down" -> image = downIdle;
+                case "left" -> image = leftIdle;
+                case "right" -> image = rightIdle;
+            }
+        }
 
         g2.drawImage(image, x, y, TILE_SIZE, TILE_SIZE, null);
     }
