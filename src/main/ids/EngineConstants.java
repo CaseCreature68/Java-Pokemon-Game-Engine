@@ -13,7 +13,7 @@ public class EngineConstants {
     public static final int FPS = 60;
 
     public static final int PLAYER_SPEED = 2;
-    public static final int PLAYER_RUNNING_SPEED = 4;
+    public static final int PLAYER_RUNNING_SPEED = 3;
     public static final String PLAYER_STARTING_DIRECTION = "down";
 
     /**

@@ -85,16 +85,52 @@ public class Player extends Entity {
             }
             x += move;
         }
+
+        spriteCounter++;
+        if (spriteCounter > 10) {
+            if (spriteNumber == 1) {
+                spriteNumber = 2;
+            } else if (spriteNumber == 2) {
+                spriteNumber = 1;
+            }
+            spriteCounter = 0;
+        }
     }
 
     public void draw(Graphics2D g2) {
-        BufferedImage image = switch (direction) {
-            case "up" -> up1;
-            case "down" -> down1;
-            case "left" -> left1;
-            case "right" -> right1;
-            default -> null;
-        };
+        BufferedImage image = null;
+
+        switch (direction) {
+            case "up" -> {
+                if (spriteNumber == 1) {
+                    image = up1;
+                } else if (spriteNumber == 2) {
+                    image = up2;
+                }
+            }
+            case "down" -> {
+                if (spriteNumber == 1) {
+                    image = down1;
+                } else if (spriteNumber == 2) {
+                    image = down2;
+                }
+            }
+            case "left" -> {
+                if (spriteNumber == 1) {
+                    image = left1;
+                } else if (spriteNumber == 2) {
+                    image = left2;
+                }
+            }
+            case "right" -> {
+                if (spriteNumber == 1) {
+                    image = right1;
+                } else if (spriteNumber == 2) {
+                    image = right2;
+                }
+            }
+        }
+        ;
 
         g2.drawImage(image, x, y, TILE_SIZE, TILE_SIZE, null);
     }
